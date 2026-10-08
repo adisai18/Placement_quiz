@@ -1,1 +1,78 @@
 
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Placement Aptitude Quiz</title>
+<style>
+:root{--bg:#f4f6fa;--card:#fff;--tx:#1b2430;--mu:#5d6b7d;--bd:#d5dce6;--ac:#1f3a5f;--gb:#d9f5e1;--gc:#168a3a;--rb:#fde0e0;--rc:#c62828;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151c;--card:#1a222d;--tx:#e8edf3;--mu:#93a1b3;--bd:#2c3745;--ac:#7fa8dc;--gb:#12351f;--gc:#4cd17a;--rb:#3d1818;--rc:#ff7b7b}}
+:root[data-theme="dark"]{--bg:#10151c;--card:#1a222d;--tx:#e8edf3;--mu:#93a1b3;--bd:#2c3745;--ac:#7fa8dc;--gb:#12351f;--gc:#4cd17a;--rb:#3d1818;--rc:#ff7b7b}
+*{box-sizing:border-box}html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ac);color:#fff;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) header{color:#10151c}}
+header b{font-size:15px}.sc{font-size:14px;white-space:nowrap}
+main{max-width:720px;margin:0 auto;padding:14px}
+h2{font-size:15px;color:var(--ac);margin:20px 0 8px;text-transform:uppercase;letter-spacing:.5px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:12px}
+.tp{font-size:12px;font-weight:700;color:var(--ac)}
+.qt{margin:4px 0 10px}
+.o{display:block;width:100%;text-align:left;background:var(--card);color:var(--tx);border:1.5px solid var(--bd);border-radius:10px;padding:11px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.o b{display:inline-block;width:26px}
+.o.c{background:var(--gb);border-color:var(--gc);color:var(--gc);font-weight:600}
+.o.w{background:var(--rb);border-color:var(--rc);color:var(--rc);font-weight:600}
+.f{margin-top:8px;font-size:14px;font-weight:700}.f.c{color:var(--gc)}.f.w{color:var(--rc)}
+table{border-collapse:collapse;margin:6px 0 10px}td,th{border:1px solid var(--bd);padding:4px 14px;text-align:center}
+.res{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;text-align:center;display:none}
+button.r{background:var(--ac);color:#fff;border:0;border-radius:10px;padding:10px 18px;font:inherit;margin-top:8px;cursor:pointer}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) button.r{color:#10151c}}
+</style></head><body>
+<header><b>Placement Aptitude Quiz</b><span class="sc" id="sc">0/25 answered · Score 0</span></header>
+<main id="m"></main>
+<script>
+const D=[
+["A","Percentages","The price of a product is increased by 20% and then decreased by x%. The final price is 4% less than the original price. What is the value of x?",["18%","20%","22%","24%"],1],
+["A","Ratio & Proportion","A, B and C invest in the ratio 3 : 5 : 7. After 4 months, A doubles his investment, while B withdraws 60% of his investment. C keeps his investment unchanged. If the total profit at the end of the year is ₹1,08,000, what is B's share?",["₹21,600","₹24,000","₹27,000","₹32,400"],0],
+["A","Averages","The average marks of 30 students is 64. When the marks of the highest-scoring and lowest-scoring students are removed, the average becomes 63. If the highest mark is 96, what is the lowest mark?",["58","60","62","64"],1],
+["A","Time & Work","A can complete a work in 18 days, B in 24 days, and C in 36 days. A and B work together for 4 days. Then B leaves and C joins A. After another 4 days, A leaves. How many more days will C alone require to finish the remaining work?",["8","9","10","12"],2],
+["A","Number Series","Find the next number:<br><b>3, 8, 18, 38, 78, 158, ?</b>",["316","318","320","322"],1],
+["A","Time, Speed & Distance","A train crosses a man standing on a platform in 12 seconds and crosses a platform of length 180 m in 24 seconds. What is the length of the train?",["150 m","180 m","200 m","240 m"],1],
+["A","Profit & Loss","A shopkeeper marks an article 40% above its cost price. He gives two successive discounts of 10% and 15%. If he still makes a profit of ₹142, what was the cost price?",["₹2,000","₹2,400","₹2,800","₹3,000"],0],
+["A","Calendar","If 1 January 2024 was a Monday, what day of the week was 1 January 2025?",["Tuesday","Wednesday","Thursday","Friday"],1],
+["A","Clock","At what time between 7 and 8 o'clock will the hour hand and minute hand of a clock be exactly opposite to each other?",["7:05 5/11","7:21 9/11","7:27 3/11","7:32 8/11"],0],
+["A","Data Interpretation","Candidates appearing for an aptitude test from four colleges:<table><tr><th>College</th><th>Male</th><th>Female</th></tr><tr><td>A</td><td>240</td><td>160</td></tr><tr><td>B</td><td>300</td><td>200</td></tr><tr><td>C</td><td>360</td><td>240</td></tr><tr><td>D</td><td>420</td><td>280</td></tr></table>Female candidates from B and C together are what percentage of the total candidates from A and D together?",["40%","45%","50%","55%"],0],
+["B","Syllogism","<b>Statements:</b> All engineers are graduates. Some graduates are researchers. No researcher is an entrepreneur. Some entrepreneurs are engineers.<br><b>Conclusions:</b><br>I. Some engineers are not researchers.<br>II. Some graduates are not entrepreneurs.<br>III. No engineer is a researcher.<br>IV. Some entrepreneurs are graduates.",["Only I and II follow","Only II and IV follow","Only I, II and IV follow","Only III and IV follow"],2],
+["B","Possibility Case","<b>Statements:</b> All P are Q. Some Q are R. No R is S.<br>Which of the following is definitely <b>NOT</b> possible?",["Some P are R","Some P are S","All P are R","All Q are S"],3],
+["B","Statement & Conclusion","<b>Statement:</b> The company has introduced flexible working hours because employee productivity was found to increase significantly when employees were allowed to choose their working schedule.<br><b>Conclusions:</b><br>I. Flexible working hours always increase productivity.<br>II. The company believes flexibility can improve productivity.<br>III. Employees were previously forced to work at fixed hours.<br>IV. Productivity was considered important by the company.",["Only II follows","Only II and IV follow","Only I and II follow","II, III and IV follow"],1],
+["B","Assertion & Reason","<b>Assertion (A):</b> A person standing near a railway track hears the train horn earlier through the rail than through air.<br><b>Reason (R):</b> Sound generally travels faster through solids than through gases.",["Both A and R are true, and R is the correct explanation of A","Both A and R are true, but R is not the correct explanation","A is true but R is false","A is false but R is true"],0],
+["B","Data Sufficiency","What is the value of x?<br>Statement I: x² − 9x + 20 = 0<br>Statement II: x is greater than 2.",["Statement I alone is sufficient","Statement II alone is sufficient","Both statements together are sufficient","Even both together are not sufficient"],3],
+["B","Directions","A person starts from point P and walks 8 km north. He turns right and walks 6 km. He turns right again and walks 8 km, then turns left and walks 10 km. How far and in which direction is he from P?",["16 km East","10 km East","12 km East","14 km West"],0],
+["B","Blood Relations","Pointing towards a photograph, Ravi said: “The woman in the photograph is the daughter of my mother's only brother.” How is the woman related to Ravi?",["Sister","Cousin","Niece","Aunt"],1],
+["B","Seating Arrangement","Eight people A–H sit around a circular table facing the centre.<br>• A sits third to the left of B.<br>• C sits second to the right of A.<br>• D sits opposite C.<br>• E is not an immediate neighbour of B.<br>• F sits immediately to the left of G.<br>• H sits between A and D.<br>Who sits opposite B?",["D","E","F","H"],3],
+["B","Ranking","In a class, Ravi ranks 17th from the top and 24th from the bottom. After Ravi's rank improves by 6 positions, another student who was originally 8 positions below Ravi moves 3 positions upward. What is the new rank of that student from the top?",["22","24","26","28"],0],
+["B","Coding-Decoding","In a certain code:<br>MANGO → 13-2-15-8-15<br>APPLE → 1-17-17-13-5<br>Using the same rule, how will GRAPE be coded?",["7-19-2-17-5","7-18-1-16-5","8-19-2-17-6","6-18-2-16-5"],0],
+["B","Coding-Decoding","If PAPER = 16116518 and PENCIL = 165143912, then how is PEN represented?",["16514","16513","16515","16414"],0],
+["B","Syllogism","<b>Statements:</b> Some books are novels. All novels are stories. No story is boring. Some boring things are books.<br><b>Conclusions:</b><br>I. Some books are not boring.<br>II. Some books are stories.<br>III. Some novels are not boring.<br>IV. No book is boring.",["Only I and II","Only II and III","Only I, II and III","All follow"],2],
+["B","Data Sufficiency","What is the rank of P from the top in a group?<br>Statement I: P is 12 ranks above Q.<br>Statement II: Q is 18th from the bottom and there are 45 people in the group.",["I alone sufficient","II alone sufficient","Both together sufficient","Both together insufficient"],2],
+["B","Ordering","Five people P, Q, R, S and T have different heights. P is taller than Q but shorter than R. S is shorter than Q. T is taller than R. Which of the following must be true?",["R is shorter than P","Q is taller than R","T is taller than S","S is taller than P"],2],
+["B","Statement & Conclusion","<b>Statement:</b> A city introduced a congestion charge for vehicles entering its central business district. Within six months, traffic volume during peak hours decreased by 18%, while public transport usage increased by 12%.<br><b>Conclusions:</b><br>I. The congestion charge contributed to reducing peak-hour traffic.<br>II. All people who stopped using cars switched to public transport.<br>III. The policy had an impact on transportation behaviour.<br>IV. Traffic congestion has been completely eliminated.",["Only I and III","Only II and III","I, II and III","I, III and IV"],0]
+];
+const m=document.getElementById("m");let done=0,score=0;
+function build(){m.innerHTML="";done=0;score=0;upd();
+let last="";
+D.forEach((d,i)=>{if(d[0]!=last){last=d[0];const h=document.createElement("h2");h.textContent=last=="A"?"Section A — Quantitative Aptitude":"Section B — Reasoning";m.appendChild(h)}
+const c=document.createElement("div");c.className="q";
+c.innerHTML=`<div class="tp">Q${i+1}. ${d[1]}</div><div class="qt">${d[2]}</div>`;
+const f=document.createElement("div");
+const bs=d[3].map((t,k)=>{const b=document.createElement("button");b.className="o";b.innerHTML=`<b>${"ABCD"[k]})</b>${t}`;
+b.onclick=()=>{if(c.dataset.d)return;c.dataset.d=1;done++;
+if(k==d[4]){b.classList.add("c");score++;f.className="f c";f.textContent="✓ Correct"}
+else{b.classList.add("w");bs[d[4]].classList.add("c");f.className="f w";f.textContent="✗ Wrong — correct answer: "+"ABCD"[d[4]]}
+upd()};c.appendChild(b);return b});
+c.appendChild(f);m.appendChild(c)});
+const r=document.createElement("div");r.className="res";r.id="res";m.appendChild(r)}
+function upd(){document.getElementById("sc").textContent=`${done}/25 answered · Score ${score}`;
+const r=document.getElementById("res");if(!r)return;
+if(done==25){r.style.display="block";r.innerHTML=`<h2 style="margin:0">Final Score: ${score} / 25</h2><div>${Math.round(score/25*100)}% correct</div><button class="r" onclick="build();scrollTo(0,0)">Retry quiz</button>`}else r.style.display="none"}
+build();
+</script></body></html>
